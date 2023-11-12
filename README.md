@@ -18,6 +18,10 @@ git clone https://github.com/salahoddin88/social_networking.git
 ```sh
 cd social_networking
 ```
+3. Visit the server URL in the browser with port 8000
+```sh
+127.0.0.1:8000
+```
 ### With Docker
 1. Build container
 ```sh
@@ -26,6 +30,10 @@ docker-compose -f docker-compose.yml build
 2. Run container
 ```sh
 docker-compose -f docker-compose.yml up -d
+```
+3. Run app, visit server url in browser with port 8000
+```sh
+127.0.0.1:8000
 ```
 ### Without Docker
 1. Create a virtual environment:
@@ -56,6 +64,10 @@ python manage.py migrate
 6. Run the development server:
 ```sh
 python manage.py runserver
+```
+7. Visit the server URL in the browser with port 8000
+```sh
+127.0.0.1:8000
 ```
 
 ## API Endpoints:
