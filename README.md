@@ -8,6 +8,7 @@ This Django Rest Framework project serves as the backend for a social networking
 - Database: SQLite3
 - Authentication: Token Authentication
 - [Download Postman Collection](https://api.postman.com/collections/9035112-2f279faf-93f7-4637-91f9-ecd91fc62181?access_key=PMAT-01HF1YHCREYZ7QF719KPEXXW04)
+  
 [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/9035112-2f279faf-93f7-4637-91f9-ecd91fc62181?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D9035112-2f279faf-93f7-4637-91f9-ecd91fc62181%26entityType%3Dcollection%26workspaceId%3D079604fd-c865-4ba6-acb5-171701ce5db9)
 
 ## Installation Steps
