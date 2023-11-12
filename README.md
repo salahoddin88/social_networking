@@ -99,7 +99,7 @@ python manage.py runserver
     ```sh
         Authorization: Token <token>
     ```
---
+---
 - List of users
     - URL: SERVERURL + /api/user/list/
     - Method : GET
@@ -112,7 +112,7 @@ python manage.py runserver
         | ---------|----------|----------|----------|
         | search | string | False | search in email and first_name |
         | page | integer | True | default is `1` |
---
+---
 - List of all pending friend request
     - URL: SERVERURL + /api/friends/request/
     - Method: GET
@@ -121,7 +121,7 @@ python manage.py runserver
         Authorization: Token <token>
     ```
     - Param:
---
+---
 - Send friend requests
 
     - URL: SERVERURL + /api/friends/request/
@@ -135,7 +135,7 @@ python manage.py runserver
         | ---------|----------|----------|----------|
         | receiver | integer (pk) | `True` | User's primary key (`id`) |
 
---
+---
 - Accept friend request
     `request_id`: Primary key that is the id of the `List of all pending friend request` API
     -URL: SERVERURL + /api/friends/request/`request_id`/accept/
@@ -144,7 +144,7 @@ python manage.py runserver
     ```sh
         Authorization: Token <token>
     ```
---
+---
 - Reject friend request
     `request_id`: Primary key that is the id of the `List of all pending friend request` API
     - URL: SERVERURL + /api/friends/request/`request_id`/reject/
@@ -153,7 +153,7 @@ python manage.py runserver
     ```sh
         Authorization: Token <token>
     ```
---
+---
 - List of all the friends
 
     - URL: SERVERURL + /api/friends/
