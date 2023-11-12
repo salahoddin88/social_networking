@@ -82,7 +82,7 @@ python manage.py runserver
         | email | string | `True` | Unique valid email address |
         | password | string | `True` | Strong password |
         | confirm_password | string | `True` | Confirm password |
-
+--
 - Login
     - URL: SERVERURL + /api/auth/token/
     - Method: POST
@@ -91,21 +91,20 @@ python manage.py runserver
         | ---------|----------|----------|----------|
         | username | string | `True` | Email Id of user |
         | password | string | `True` | Password of user |
-      
+--
 - Logout
     - URL: SERVERURL + /api/auth/delete-token/
     - Method: POST
     - Header:
-    ```sh 
+    ```sh
         Authorization: Token <token>
     ```
-    - Payload: 
-
+--
 - List of users
     - URL: SERVERURL + /api/user/list/
     - Method : GET
     - Header:
-    ```sh 
+    ```sh
         Authorization: Token <token>
     ```
     - Param:
@@ -113,56 +112,53 @@ python manage.py runserver
         | ---------|----------|----------|----------|
         | search | string | False | search in email and first_name |
         | page | integer | True | default is `1` |
-
+--
 - List of all pending friend request
     - URL: SERVERURL + /api/friends/request/
     - Method: GET
     - Header:
-    ```sh 
+    ```sh
         Authorization: Token <token>
     ```
-    - Param:  
-
+    - Param:
+--
 - Send friend requests
 
     - URL: SERVERURL + /api/friends/request/
     - Method: POST
     - Header:
-    ```sh 
+    ```sh
         Authorization: Token <token>
     ```
     - Payload:
         | Fields | Type | Required | Description |
         | ---------|----------|----------|----------|
         | receiver | integer (pk) | `True` | User's primary key (`id`) |
-    
 
+--
 - Accept friend request
     `request_id`: Primary key that is the id of the `List of all pending friend request` API
     -URL: SERVERURL + /api/friends/request/`request_id`/accept/
     - Method: PUT
     - Header:
-    ```sh 
+    ```sh
         Authorization: Token <token>
     ```
-    Payload: 
-
+--
 - Reject friend request
     `request_id`: Primary key that is the id of the `List of all pending friend request` API
     - URL: SERVERURL + /api/friends/request/`request_id`/reject/
     - Method: PUT
     - Header:
-    ```sh 
+    ```sh
         Authorization: Token <token>
     ```
-    - Payload: 
-
+--
 - List of all the friends
 
     - URL: SERVERURL + /api/friends/
     - Method: GET
     - Header:
-    ```sh 
+    ```sh
         Authorization: Token <token>
     ```
-    Param: 
