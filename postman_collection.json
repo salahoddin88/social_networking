@@ -1,0 +1,415 @@
+{
+	"info": {
+		"_postman_id": "2f279faf-93f7-4637-91f9-ecd91fc62181",
+		"name": "Social Networking: Assignment",
+		"description": "Problem Statement  \nCreate an API for social networking application using Django Rest Framework with  \nbelow functionalities.\n\nConstraints  \n• Use any database of your choice  \n• You are free to design Request/Response fields/formats\n\nUser Login/Signup  \n• Users should be able to login with their email and password(email should be case  \ninsensitive)  \n• User should be able to signup with their email only(no otp verification required, valid  \nemail format is sufficient)  \n• Except signup and login every api should be called for authenticated users only\n\nDevelop API for following functionalities:  \n• API to search other users by email and name(paginate up to 10 records per page).  \na) If search keyword matches exact email then return user associated with the  \nemail.  \nb) If the search keyword contains any part of the name then return a list of all  \nusers.  \neg:- Amarendra, Amar, aman, Abhirama are three users and if users search with \"am\"  \nthen all of these users should be shown in the search result because \"am\"  \nsubstring is part of all of these names.  \nc) There will be only one search keyword that will search either by name or email.  \n• API to send/accept/reject friend request  \n• API to list friends(list of users who have accepted friend request)  \n• List pending friend requests(received friend request)  \n• Users can not send more than 3 friend requests within a minute.\n\nSubmission  \n• Add project in github and share link  \n• Add Readmefile having installation steps  \n• Add requirements.txt  \n• Containerize applications with docker(you don't need to create image, you can just  \nadd related docker-compose and Dockerfile).  \n• Before submitting a project re-verify installation steps, so that it is easy for us to  \nevaluate.  \n• Share postman collection for each API endpoints as well for fast evaluation.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9035112"
+	},
+	"item": [
+		{
+			"name": "Registration and Profile",
+			"item": [
+				{
+					"name": "Registration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "john",
+									"description": "optional",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "smith",
+									"description": "optional",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "john.k@example.com",
+									"description": "required",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "User@123",
+									"description": "required",
+									"type": "text"
+								},
+								{
+									"key": "confirm_password",
+									"value": "User@123",
+									"description": "required",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/user/registration/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"registration",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "john.s@example.com",
+									"description": "email address field",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "User@123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/token/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"token",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/delete-token/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"delete-token",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Users List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/user/list/?page=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"list",
+								""
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "john",
+									"description": "email or first_name",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"description": "optional for first page"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Friends",
+			"item": [
+				{
+					"name": "Pending friend requests",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/friends/request/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"friends",
+								"request",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send friend requests",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "receiver",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/friends/request/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"friends",
+								"request",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Accept friend requests",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/friends/request/38/accept/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"friends",
+								"request",
+								"38",
+								"accept",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reject friend requests",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/friends/request/4/reject/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"friends",
+								"request",
+								"4",
+								"reject",
+								""
+							]
+						},
+						"description": "friend request id in the url and action accept and reject"
+					},
+					"response": []
+				},
+				{
+					"name": "Friends list",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/friends/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"friends",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "TOKEN",
+			"value": "TOKEN 3ddd07ea83d852f1b2b81826cd2c3980ca115837",
+			"type": "string"
+		}
+	]
+}
