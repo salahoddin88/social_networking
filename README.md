@@ -1,9 +1,10 @@
+
 # Social Network API
 
 ## Overview:
 This Django Rest Framework project serves as the backend for a social networking application, offering a set of API endpoints to facilitate user registration, authentication, and friend management. The installation steps cater to both Docker and non-Docker environments.
 
-- Backend: Django, Django Restframework
+- Backend: Django, Django Rest Framework
 - Database: SQLite3
 - Authentication: Token Authentication
 - [Download Postman Collection](https://raw.githubusercontent.com/salahoddin88/social_networking/main/README.md)
@@ -57,26 +58,22 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-
-
 ## API Endpoints:
 - Registration
     - URL: SERVERURL + /api/user/registration/
     - Method : POST
     - Payload:
-        ```sh
-            {
-                first_name: str (optional)
-                last_name: str (optional)
-                email: str (required)
-                password: str (required)
-                confirm_password: str (required)
-            }
-        ```
+        | Fields | Type | Required | Description |
+        | ---------|----------|----------|----------|
+        | first_name | string | False | optional field can make required |
+        | last_name | string | False | optional field can make required |
+        | email | string | `True` | Unique valid email address |
+        | password | string | `True` | Strong password |
+        | confirm_password | string | `True` | Confirm password |
 
 - Login
     - URL: SERVERURL + /api/auth/token/
-    - Method : POST
+    - Method: POST
     - Payload:
         ```sh
             {
@@ -86,12 +83,10 @@ python manage.py runserver
         ```
 - Logout
     - URL: SERVERURL + /api/auth/delete-token/
-    - Method : POST
+    - Method: POST
     - Header:
-    ```sh
-        {
-            Authorization: Token <token>
-        }
+    ```sh 
+        Authorization: Token <token>
     ```
     - Payload: {}
 
@@ -99,10 +94,8 @@ python manage.py runserver
     - URL: SERVERURL + /api/user/list/
     - Method : GET
     - Header:
-    ```sh
-        {
-            Authorization: Token <token>
-        }
+    ```sh 
+        Authorization: Token <token>
     ```
     - Param:
     ```sh
@@ -114,24 +107,20 @@ python manage.py runserver
 
 - List of all pending friend request
     - URL: SERVERURL + /api/friends/request/
-    - Method : GET
+    - Method: GET
     - Header:
-    ```sh
-        {
-            Authorization: Token <token>
-        }
+    ```sh 
+        Authorization: Token <token>
     ```
     - Param:  { }
 
 - Send friend requests
 
     - URL: SERVERURL + /api/friends/request/
-    - Method : POST
+    - Method: POST
     - Header:
-    ```sh
-        {
-            Authorization: Token <token>
-        }
+    ```sh 
+        Authorization: Token <token>
     ```
     - Payload:
     ```sh
@@ -141,38 +130,32 @@ python manage.py runserver
     ```
 
 - Accept friend request
-`request_id` : primary key that is id of List of all pending friend request API
+`request_id`: Primary key that is the id of the `List of all pending friend request` API
 
     -URL: SERVERURL + /api/friends/request/`request_id`/accept/
-    - Method : PUT
+    - Method: PUT
     - Header:
-    ```sh
-        {
-            Authorization: Token <token>
-        }
+    ```sh 
+        Authorization: Token <token>
     ```
     Payload: { }
 
 - Reject friend request
-    `request_id` : primary key that is id of List of all pending friend request API
+    `request_id`: Primary key that is the id of the `List of all pending friend request` API
     - URL: SERVERURL + /api/friends/request/`request_id`/reject/
-    - Method : PUT
+    - Method: PUT
     - Header:
-    ```sh
-        {
-            Authorization: Token <token>
-        }
+    ```sh 
+        Authorization: Token <token>
     ```
     - Payload: {}
 
 - List of all the friends
 
     - URL: SERVERURL + /api/friends/
-    - Method : GET
+    - Method: GET
     - Header:
-    ```sh
-        {
-            Authorization: Token <token>
-        }
+    ```sh 
+        Authorization: Token <token>
     ```
     Param: { }
