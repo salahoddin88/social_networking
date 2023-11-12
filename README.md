@@ -82,7 +82,7 @@ python manage.py runserver
         | email | string | `True` | Unique valid email address |
         | password | string | `True` | Strong password |
         | confirm_password | string | `True` | Confirm password |
---
+---
 - Login
     - URL: SERVERURL + /api/auth/token/
     - Method: POST
@@ -91,7 +91,7 @@ python manage.py runserver
         | ---------|----------|----------|----------|
         | username | string | `True` | Email Id of user |
         | password | string | `True` | Password of user |
---
+---
 - Logout
     - URL: SERVERURL + /api/auth/delete-token/
     - Method: POST
