@@ -19,10 +19,6 @@ git clone https://github.com/salahoddin88/social_networking.git
 ```sh
 cd social_networking
 ```
-3. Visit the server URL in the browser with port 8000
-```sh
-127.0.0.1:8000
-```
 ### With Docker
 1. Build container
 ```sh
