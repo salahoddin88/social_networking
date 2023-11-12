@@ -7,7 +7,7 @@ This Django Rest Framework project serves as the backend for a social networking
 - Backend: Django, Django Rest Framework
 - Database: SQLite3
 - Authentication: Token Authentication
-- [Download Postman Collection](https://raw.githubusercontent.com/salahoddin88/social_networking/main/README.md)
+- [Download Postman Collection](https://raw.githubusercontent.com/salahoddin88/social_networking/main/postman_collection.json)
 
 ## Installation Steps
 1. Clone the repository:
