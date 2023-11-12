@@ -44,11 +44,15 @@ source venv/bin/activate
 ```sh
 pip install -r requirements.txt
 ```
-4. Apply migrations:
+4. Navigate to project directory /app
+```sh
+cd app
+```
+5. Apply migrations:
 ```sh
 python manage.py migrate
 ```
-5. Run the development server:
+6. Run the development server:
 ```sh
 python manage.py runserver
 ```
