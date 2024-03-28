@@ -118,7 +118,6 @@ python manage.py runserver
     ```sh
         Authorization: Token <token>
     ```
-    - Param:
 ---
 - Send friend requests
 
